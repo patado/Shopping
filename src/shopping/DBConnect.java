@@ -18,7 +18,7 @@ public class DBConnect {
     
     
     
-    public void dbconnecttoSQLite(String s) {
+    public void dbconnecttoSQLite(String sqlQuery) {
     
     // load the sqlite-JDBC driver using the current class loader
     try {
@@ -42,7 +42,7 @@ public class DBConnect {
       
       
       
-      ResultSet rs2 = statement.executeQuery(s);
+      ResultSet queryResultSet = statement.executeQuery(sqlQuery);
       
       
       
@@ -57,10 +57,10 @@ public class DBConnect {
 //      }
       
       
-      while(rs2.next())
+      while(queryResultSet.next())
       {
         // read the result set
-        System.out.println(rs2.getString("RecItem"));
+        System.out.println(queryResultSet.getString("RecItem"));
 //        System.out.println("id = " + rs.getInt("id"));
       }
     }
@@ -86,11 +86,11 @@ public class DBConnect {
     
 }
     
-     public ArrayList dbconnecttoSQLite2(String s) {
+     public ArrayList dbconnecttoSQLite2(String SQLQuery) {
     
     // load the sqlite-JDBC driver using the current class loader
          
-         ArrayList <String> aL = new ArrayList();
+         ArrayList <String> QueryResultsNameRecipe = new ArrayList();
     try {
         
         Class.forName("org.sqlite.JDBC");
@@ -106,17 +106,23 @@ public class DBConnect {
       connection = DriverManager.getConnection("jdbc:sqlite:recipe.db");
       Statement statement = connection.createStatement();
       statement.setQueryTimeout(30);  // set timeout to 30 sec.
+      
+      ResultSet queryResultSet = statement.executeQuery(SQLQuery);
+      
 
-      ResultSet rs2 = statement.executeQuery(s);
-
-      while(rs2.next())
+      while(queryResultSet.next())
       {
         // read the result set
-          aL.add(rs2.getString("RecItem"));
+          QueryResultsNameRecipe.add(queryResultSet.getString("RecItem"));
           //System.out.println(rs2.getString("RecItem"));
 
       }
+      
+      statement.close();
       connection.close();
+      
+      
+      
     }
     catch(SQLException e)
     {
@@ -138,16 +144,15 @@ public class DBConnect {
       }
     }
     
-    return aL;
+    return QueryResultsNameRecipe;
     
 }
     
      
-     public String dbconnecttoSQLite3(String s) {
+     public String dbconnecttoSQLite3(String SQLQuery) {
     
     // load the sqlite-JDBC driver using the current class loader
          
-         //ArrayList <String> aL = new ArrayList();
          String result = null;
     try {
         
@@ -158,23 +163,31 @@ public class DBConnect {
         System.err.println(e);
     }
     Connection connection = null;
+    // System.err.println("Here");
     try
     {
       // create a database connection
       connection = DriverManager.getConnection("jdbc:sqlite:recipe.db");
-      Statement statement = connection.createStatement();
-      statement.setQueryTimeout(30);  // set timeout to 30 sec.
+      Statement statement2 = connection.createStatement();
+      statement2.setQueryTimeout(30);  // set timeout to 30 sec.
 
-      ResultSet rs2 = statement.executeQuery(s);
+      ResultSet queryResultSet = statement2.executeQuery(SQLQuery);
+      
+      
 
-      result = rs2.getString("RecItem");
+      result = queryResultSet.getString("RecItem");
+      
+
       
     }
     catch(SQLException e)
     {
       // if the error message is "out of memory", 
       // it probably means no database file is found
-      // System.err.println(e.getMessage());
+      // 
+        // System.err.println(e.getMessage());///////// Multiple querries are causing a resultset closed error
+        //System.err.println(e.toString());
+        
     }
     finally
     {
