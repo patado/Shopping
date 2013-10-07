@@ -6,6 +6,7 @@ package shopping;
 
 
 import java.sql.*;
+import java.util.ArrayList;
 
 
 /**
@@ -84,4 +85,116 @@ public class DBConnect {
     }
     
 }
+    
+     public ArrayList dbconnecttoSQLite2(String s) {
+    
+    // load the sqlite-JDBC driver using the current class loader
+         
+         ArrayList <String> aL = new ArrayList();
+    try {
+        
+        Class.forName("org.sqlite.JDBC");
+
+    }
+    catch (ClassNotFoundException e) {
+        System.err.println(e);
+    }
+    Connection connection = null;
+    try
+    {
+      // create a database connection
+      connection = DriverManager.getConnection("jdbc:sqlite:recipe.db");
+      Statement statement = connection.createStatement();
+      statement.setQueryTimeout(30);  // set timeout to 30 sec.
+
+      ResultSet rs2 = statement.executeQuery(s);
+
+      while(rs2.next())
+      {
+        // read the result set
+          aL.add(rs2.getString("RecItem"));
+          //System.out.println(rs2.getString("RecItem"));
+
+      }
+      connection.close();
+    }
+    catch(SQLException e)
+    {
+      // if the error message is "out of memory", 
+      // it probably means no database file is found
+      System.err.println(e.getMessage());
+    }
+    finally
+    {
+      try
+      {
+        if(connection != null)
+          connection.close();
+      }
+      catch(SQLException e)
+      {
+        // connection close failed.
+        System.err.println(e);
+      }
+    }
+    
+    return aL;
+    
+}
+    
+     
+     public String dbconnecttoSQLite3(String s) {
+    
+    // load the sqlite-JDBC driver using the current class loader
+         
+         //ArrayList <String> aL = new ArrayList();
+         String result = null;
+    try {
+        
+        Class.forName("org.sqlite.JDBC");
+
+    }
+    catch (ClassNotFoundException e) {
+        System.err.println(e);
+    }
+    Connection connection = null;
+    try
+    {
+      // create a database connection
+      connection = DriverManager.getConnection("jdbc:sqlite:recipe.db");
+      Statement statement = connection.createStatement();
+      statement.setQueryTimeout(30);  // set timeout to 30 sec.
+
+      ResultSet rs2 = statement.executeQuery(s);
+
+      result = rs2.getString("RecItem");
+      
+    }
+    catch(SQLException e)
+    {
+      // if the error message is "out of memory", 
+      // it probably means no database file is found
+      // System.err.println(e.getMessage());
+    }
+    finally
+    {
+      try
+      {
+        if(connection != null)
+          connection.close();
+      }
+      catch(SQLException e)
+      {
+        // connection close failed.
+        System.err.println(e);
+      }
+    }
+    
+    return result;
+    
+}
+    
+    
+    
+    
 }

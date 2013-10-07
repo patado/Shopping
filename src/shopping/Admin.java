@@ -64,6 +64,7 @@ public class Admin {
                 Menu.requestRecipe();
                 break;
             case 2: System.out.println("menu 2");
+                Menu.requestRecipe2();
                 break;
             case 3: Individual a = new Individual("Bob");
                 System.out.print(a.toString());
