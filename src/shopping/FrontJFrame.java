@@ -88,6 +88,8 @@ public class FrontJFrame extends javax.swing.JFrame {
         if (AllRecipesComboBox.getSelectedIndex()!=0) {
             System.out.println(AllRecipesComboBox.getSelectedItem());
             RecipeNamejLabel.setText(AllRecipesComboBox.getSelectedItem().toString());
+            
+            new DBConnect().dbconnecttoSQLiteGetAndDisplayRecipe(AllRecipesComboBox.getSelectedItem().toString());
         }
     }//GEN-LAST:event_AllRecipesComboBoxActionPerformed
 

@@ -207,6 +207,73 @@ public class DBConnect {
     
 }
      
+     
+        public void dbconnecttoSQLiteGetAndDisplayRecipe(String RecipeName) {
+    
+    // load the sqlite-JDBC driver using the current class loader
+         
+         ArrayList <String> aLresult = new ArrayList();
+    try {
+        
+        Class.forName("org.sqlite.JDBC");
+
+    }
+    catch (ClassNotFoundException e) {
+        System.err.println(e);
+    }
+    Connection connection = null;
+    // System.err.println("Here");
+    try
+    {
+      // create a database connection
+      connection = DriverManager.getConnection("jdbc:sqlite:recipe.db");
+      Statement statement2 = connection.createStatement();
+      statement2.setQueryTimeout(30);  // set timeout to 30 sec.
+
+      String SQLQuery = "SELECT Description FROM Procedure WHERE RecItem LIKE '" + RecipeName + "' ORDER BY RecItem";
+      ResultSet queryResultSet = statement2.executeQuery(SQLQuery);
+      
+      
+      while(queryResultSet.next())
+      {
+        // read the result set
+          aLresult.add(queryResultSet.getString("Description"));
+
+      }
+      
+      System.out.println(aLresult.toString());
+      System.out.println("Test");
+      
+      new OneRecipeDisplayJFrame(RecipeName, aLresult).CreateJFrame(RecipeName, aLresult);
+
+      
+    }
+    catch(SQLException e)
+    {
+      // if the error message is "out of memory", 
+      // it probably means no database file is found
+      // 
+        // System.err.println(e.getMessage());///////// Multiple querries are causing a resultset closed error
+        System.err.println(e.toString());
+        
+    }
+    finally
+    {
+      try
+      {
+        if(connection != null)
+          connection.close();
+      }
+      catch(SQLException e)
+      {
+        // connection close failed.
+        System.err.println(e);
+      }
+    }
+    
+    //return result;
+    
+}
 
     
     
