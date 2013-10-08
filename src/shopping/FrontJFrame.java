@@ -27,32 +27,31 @@ public class FrontJFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        AllRecipesChoiceDropDown = new java.awt.Choice();
         TitleLabel = new java.awt.Label();
         RecipeNamejLabel = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        AllRecipesComboBox = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        AllRecipesChoiceDropDown.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        AllRecipesChoiceDropDown.setName("AllRecipesChoiceDropDown"); // NOI18N
-        AllRecipesChoiceDropDown.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AllRecipesChoiceDropDownMouseClicked(evt);
-            }
-        });
 
         TitleLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         TitleLabel.setText("Choose Recipe");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, new java.awt.Choice(), org.jdesktop.beansbinding.ObjectProperty.create(), AllRecipesComboBox, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
         ArrayList <String> aL2 = new ArrayList();
         aL2 = Menu.returnAllRecipes();
 
         for (int x = 0; x < aL2.size();x++) {
-            AllRecipesChoiceDropDown.addItem(aL2.get(x));
+            AllRecipesComboBox.addItem(aL2.get(x));
         }
+        AllRecipesComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AllRecipesComboBoxActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -62,9 +61,8 @@ public class FrontJFrame extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(TitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AllRecipesChoiceDropDown, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(RecipeNamejLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox1, 0, 272, Short.MAX_VALUE))
+                    .addComponent(AllRecipesComboBox, 0, 272, Short.MAX_VALUE))
                 .addContainerGap(354, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -72,32 +70,26 @@ public class FrontJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(TitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(AllRecipesChoiceDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(AllRecipesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
                 .addComponent(RecipeNamejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(102, 102, 102)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(236, Short.MAX_VALUE))
         );
 
-        ArrayList <String> aL = new ArrayList();
-        aL = Menu.returnAllRecipes();
-
-        for (int x = 0; x < aL.size();x++) {
-            AllRecipesChoiceDropDown.addItem(aL.get(x));
-        }
+        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void AllRecipesChoiceDropDownMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AllRecipesChoiceDropDownMouseClicked
+    private void AllRecipesComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AllRecipesComboBoxActionPerformed
         // TODO add your handling code here:
-        //String selectedItem = AllRecipesChoiceDropDown.getSelectedItem();
-        System.out.println(AllRecipesChoiceDropDown.getSelectedItem());
-        RecipeNamejLabel.setText(AllRecipesChoiceDropDown.getSelectedItem());
         
-    }//GEN-LAST:event_AllRecipesChoiceDropDownMouseClicked
+        if (AllRecipesComboBox.getSelectedIndex()!=0) {
+            System.out.println(AllRecipesComboBox.getSelectedItem());
+            RecipeNamejLabel.setText(AllRecipesComboBox.getSelectedItem().toString());
+        }
+    }//GEN-LAST:event_AllRecipesComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,6 +117,7 @@ public class FrontJFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FrontJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -134,9 +127,9 @@ public class FrontJFrame extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Choice AllRecipesChoiceDropDown;
+    private javax.swing.JComboBox AllRecipesComboBox;
     private javax.swing.JLabel RecipeNamejLabel;
     private java.awt.Label TitleLabel;
-    private javax.swing.JComboBox jComboBox1;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

@@ -27,9 +27,8 @@
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="TitleLabel" min="-2" pref="131" max="-2" attributes="0"/>
-                  <Component id="AllRecipesChoiceDropDown" max="32767" attributes="0"/>
                   <Component id="RecipeNamejLabel" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jComboBox1" pref="272" max="32767" attributes="0"/>
+                  <Component id="AllRecipesComboBox" pref="272" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="354" max="32767" attributes="0"/>
           </Group>
@@ -40,32 +39,16 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
               <Component id="TitleLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-              <Component id="AllRecipesChoiceDropDown" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="AllRecipesComboBox" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
               <Component id="RecipeNamejLabel" min="-2" pref="30" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
-              <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="114" max="32767" attributes="0"/>
+              <EmptySpace pref="236" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="java.awt.Choice" name="AllRecipesChoiceDropDown">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Dialog" size="12" style="1"/>
-        </Property>
-        <Property name="name" type="java.lang.String" value="AllRecipesChoiceDropDown" noResource="true"/>
-      </Properties>
-      <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AllRecipesChoiceDropDownMouseClicked"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ArrayList &lt;String&gt; aL = new ArrayList();&#xa;aL = Menu.returnAllRecipes();&#xa;&#xa;for (int x = 0; x &lt; aL.size();x++) {&#xa;    AllRecipesChoiceDropDown.addItem(aL.get(x));&#xa;}"/>
-      </AuxValues>
-    </Component>
     <Component class="java.awt.Label" name="TitleLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -76,19 +59,20 @@
     </Component>
     <Component class="javax.swing.JLabel" name="RecipeNamejLabel">
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox1">
+    <Component class="javax.swing.JComboBox" name="AllRecipesComboBox">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
+      <BindingProperties>
+        <BindingProperty name="selectedItem" source="AllRecipesChoiceDropDown" target="AllRecipesComboBox" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+      </BindingProperties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AllRecipesComboBoxActionPerformed"/>
+      </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="ArrayList &lt;String&gt; aL2 = new ArrayList();&#xa;aL2 = Menu.returnAllRecipes();&#xa;&#xa;for (int x = 0; x &lt; aL2.size();x++) {&#xa;    AllRecipesChoiceDropDown.addItem(aL2.get(x));&#xa;}"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="ArrayList &lt;String&gt; aL2 = new ArrayList();&#xa;aL2 = Menu.returnAllRecipes();&#xa;&#xa;for (int x = 0; x &lt; aL2.size();x++) {&#xa;    AllRecipesComboBox.addItem(aL2.get(x));&#xa;}"/>
       </AuxValues>
     </Component>
   </SubComponents>
