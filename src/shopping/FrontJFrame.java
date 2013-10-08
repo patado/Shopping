@@ -125,6 +125,7 @@ public class FrontJFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FrontJFrame().setVisible(true);
+                
             }
         });
     }
