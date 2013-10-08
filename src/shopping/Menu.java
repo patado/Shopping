@@ -61,9 +61,22 @@ public class Menu {
     }
     
             
-            
+       public static ArrayList returnAllRecipes() {
+
+        ArrayList <String> aL = new ArrayList();
+
+        
+        aL = new DBConnect().dbconnecttoSQLite2("select DISTINCT RecItem from RecipeIngredients");
+        
+        //.dbconnecttoSQLite("select DISTINCT RecItem from RecipeIngredients where InItem LIKE '%"+ s + "%'");
+        
+        //System.out.println(aL.toString()); 
+        //System.out.println(aL.size());
+        aL.add(0, "Choose a recipe");
+        
+        return aL;
     
-    
+       }
     
     public static void returnRecipeName (int i) {
         

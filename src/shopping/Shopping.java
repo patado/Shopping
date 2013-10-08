@@ -15,7 +15,8 @@ public class Shopping {
      */
     public static void main(String[] args) {
         
-        new Admin().menuStart();
+        //new Admin().menuStart();
+        FrontJFrame.CreateFrontJFrame();
         
         
         

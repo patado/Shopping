@@ -31,7 +31,7 @@ public class Admin {
             System.out.println("2  - I have a number of ingredients, just need a list of recipes that use them all");
             System.out.println("3  - Show me the list of recipes where I already have all the ingredients (no shopping)");
             System.out.println("4  - I want to prepare menus for the week and generate the relevant shopping list");
-            System.out.println("5  - I want to add another recipe to the database");
+            System.out.println("5  - Return All Recipes");//("5  - I want to add another recipe to the database");
             System.out.println("6  - Show me the list of items that will hit the 'use by date' this week");
             System.out.println("7  - Update the list of items showing in my cupboard");
             System.out.println("8  - In this menu you may specify how many people live at home (default 1)");
@@ -73,6 +73,7 @@ public class Admin {
                 System.out.print(b.toString());
                 break;
            case 5: System.out.println("menu 5");
+                Menu.returnAllRecipes();
                 break;
            case 6: System.out.println("menu 6");
                 break;
