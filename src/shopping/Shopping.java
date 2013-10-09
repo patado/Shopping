@@ -15,8 +15,8 @@ public class Shopping {
      */
     public static void main(String[] args) {
         
-        //new Admin().menuStart();
-        FrontJFrame.CreateFrontJFrame();
+        new Admin().menuStart();
+        //FrontJFrame.CreateFrontJFrame();
         
         //new DBConnect().dbconnecttoSQLiteGetAndDisplayRecipe("Apple Pie");
         

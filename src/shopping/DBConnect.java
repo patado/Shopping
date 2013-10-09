@@ -5,8 +5,13 @@
 package shopping;
 
 
+import java.awt.Image;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 
 /**
@@ -241,10 +246,26 @@ public class DBConnect {
 
       }
       
-      System.out.println(aLresult.toString());
-      System.out.println("Test");
+      Statement statement3 = connection.createStatement();
+      statement3.setQueryTimeout(30);  // set timeout to 30 sec.
+
+      String SQLQuery3 = "SELECT PicData FROM Pics where RecItem LIKE '" + RecipeName + "'";
+      ResultSet queryResultSet3 = statement3.executeQuery(SQLQuery3);
       
-      new OneRecipeDisplayJFrame(RecipeName, aLresult).CreateJFrame(RecipeName, aLresult);
+      Blob imageBlob = queryResultSet3.getBlob("PicData");
+      InputStream binaryStream = imageBlob.getBinaryStream(0, imageBlob.length());
+      Image image = null;
+      try {
+          image = ImageIO.read(binaryStream);
+          
+      }
+      catch (IOException e) {
+          
+      }
+      ImageIcon icon = new ImageIcon(image);
+      
+      
+      new OneRecipeDisplayJFrame(RecipeName, aLresult, icon).CreateJFrame(RecipeName, aLresult, icon);
 
       
     }

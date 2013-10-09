@@ -4,7 +4,9 @@
  */
 package shopping;
 
+import java.awt.Image;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -15,11 +17,13 @@ public class OneRecipeDisplayJFrame extends javax.swing.JFrame {
     /**
      * Creates new form OneRecipeDisplayJFrame
      */
-    public OneRecipeDisplayJFrame(String recipeName, ArrayList recipeDesc) {
+    public OneRecipeDisplayJFrame(String recipeName, ArrayList recipeDesc, ImageIcon icon) {
         
         this.recipeName = recipeName;
         this.recipeDesc = recipeDesc;
+        this.icon = icon;
         initComponents();
+        
     }
     
 //    public OneRecipeDisplayJFrame() {
@@ -40,6 +44,7 @@ public class OneRecipeDisplayJFrame extends javax.swing.JFrame {
         RecipeNamejLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         RecipeProcedurejTextArea = new javax.swing.JTextArea();
+        imagejLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,16 +66,24 @@ public class OneRecipeDisplayJFrame extends javax.swing.JFrame {
         RecipeProcedurejTextArea.setText(s);
         jScrollPane1.setViewportView(RecipeProcedurejTextArea);
 
+        imagejLabel.setIcon(icon);
+        imagejLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)
-                    .addComponent(RecipeNamejLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(RecipeNamejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                        .addComponent(imagejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,8 +91,10 @@ public class OneRecipeDisplayJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(RecipeNamejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(imagejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -88,7 +103,7 @@ public class OneRecipeDisplayJFrame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public void CreateJFrame(final String recipeName, final ArrayList recipeDesc) {
+    public void CreateJFrame(final String recipeName, final ArrayList recipeDesc, final  ImageIcon icon) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -117,17 +132,19 @@ public class OneRecipeDisplayJFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new OneRecipeDisplayJFrame(recipeName, recipeDesc).setVisible(true);
+                new OneRecipeDisplayJFrame(recipeName, recipeDesc, icon).setVisible(true);
                 
             }
         });
     }
     
+    private ImageIcon icon;
     private String recipeName;
     private ArrayList <String> recipeDesc;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel RecipeNamejLabel;
     private javax.swing.JTextArea RecipeProcedurejTextArea;
+    private javax.swing.JLabel imagejLabel;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

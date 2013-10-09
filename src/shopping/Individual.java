@@ -58,7 +58,7 @@ public class Individual {
             
         System.out.println(" living at home. ");
         
-        if (family.size()>1)
+        if (family.size()>0)
         {
             System.out.println("\nDo you want to remove / add people?");
             System.out.println("type 1 to add");
@@ -85,7 +85,7 @@ public class Individual {
     }
     
     public void addPeople(){
-        System.out.println("How many people are there at home?");
+        System.out.println("How many additional people are there at home?");
         int numberPeople = sc.nextInt();
         for (int i=0 ; i<numberPeople ; i++)
         {
@@ -148,9 +148,19 @@ public class Individual {
     }
     
     public void removePeople(){
-        System.out.println("\nPlease select relevant numbers for the family member(s) you want to remove:");
+        System.out.println("\nPlease select relevant number for the family member you want to remove:");
         for (int i=0 ; i<family.size() ; i++)
-            System.out.print(i+". "+(family.get(i).toString()));
+            System.out.println((i)+". "+(family.get(i).toString()));
+        
+        int removePeople = sc.nextInt();
+        
+        family.remove(removePeople);
+                  
+            
+        
+        
+        
+        
         
         Admin.menuStart();
     

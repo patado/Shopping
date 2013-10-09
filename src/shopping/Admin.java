@@ -40,6 +40,7 @@ public class Admin {
             System.out.println("9  - In this menu you may list the equipment at your disposal for cooking (default none)");
             System.out.println("10 - In this menu you may specify the general requirements for your menus (default none)");
             System.out.println("11 - Reports section");
+            System.out.println("12 - Let me select a recipe in the database");
             System.out.println("0 - Exit");
 
             try{
@@ -48,7 +49,7 @@ public class Admin {
             catch(Exception e)
                 {System.out.println("Please select a number");flag=true;};
 
-            if (menuInit>11 | menuInit<0)
+            if (menuInit>12 | menuInit<0)
                 flag=true;
 
             sc.nextLine();
@@ -78,6 +79,7 @@ public class Admin {
            case 6: System.out.println("menu 6");
                 break;
            case 7: System.out.println("menu 7");
+                new Ingredient();
                 break;
            case 8: System.out.println("menu 8");
                    new Individual();
@@ -87,6 +89,8 @@ public class Admin {
            case 10: System.out.println("menu 10");
                 break;
            case 11: System.out.println("menu 11");
+                break;
+           case 12: FrontJFrame.CreateFrontJFrame();
                 break;
         }
         
