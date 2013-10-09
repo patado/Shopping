@@ -5,9 +5,9 @@
 package shopping;
 
 
-import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
@@ -215,88 +215,134 @@ public class DBConnect {
      
         public void dbconnecttoSQLiteGetAndDisplayRecipe(String RecipeName) {
     
-    // load the sqlite-JDBC driver using the current class loader
+            // load the sqlite-JDBC driver using the current class loader
          
-         ArrayList <String> aLresult = new ArrayList();
-    try {
-        
-        Class.forName("org.sqlite.JDBC");
+            ArrayList <String> aLresult = new ArrayList();
+            try { Class.forName("org.sqlite.JDBC"); }
+            catch (ClassNotFoundException e) { System.err.println(e); }
+            Connection connection = null;
+            // System.err.println("Here");
+            try
+            {
+              // create a database connection
+              connection = DriverManager.getConnection("jdbc:sqlite:recipe.db");
+              Statement statement2 = connection.createStatement();
+              statement2.setQueryTimeout(30);  // set timeout to 30 sec.
 
-    }
-    catch (ClassNotFoundException e) {
-        System.err.println(e);
-    }
-    Connection connection = null;
-    // System.err.println("Here");
-    try
-    {
-      // create a database connection
-      connection = DriverManager.getConnection("jdbc:sqlite:recipe.db");
-      Statement statement2 = connection.createStatement();
-      statement2.setQueryTimeout(30);  // set timeout to 30 sec.
+              String SQLQuery = "SELECT Description FROM Procedure WHERE RecItem LIKE '" + RecipeName + "' ORDER BY RecItem";
+              ResultSet queryResultSet = statement2.executeQuery(SQLQuery);
 
-      String SQLQuery = "SELECT Description FROM Procedure WHERE RecItem LIKE '" + RecipeName + "' ORDER BY RecItem";
-      ResultSet queryResultSet = statement2.executeQuery(SQLQuery);
-      
-      
-      while(queryResultSet.next())
-      {
-        // read the result set
-          aLresult.add(queryResultSet.getString("Description"));
 
-      }
-      
-      Statement statement3 = connection.createStatement();
-      statement3.setQueryTimeout(30);  // set timeout to 30 sec.
+              while(queryResultSet.next())
+              {
+                // read the result set
+                  aLresult.add(queryResultSet.getString("Description"));
 
-      String SQLQuery3 = "SELECT PicData FROM Pics where RecItem LIKE '" + RecipeName + "'";
-      ResultSet queryResultSet3 = statement3.executeQuery(SQLQuery3);
-      
-      Blob imageBlob = queryResultSet3.getBlob("PicData");
-      InputStream binaryStream = imageBlob.getBinaryStream(0, imageBlob.length());
-      Image image = null;
-      try {
-          image = ImageIO.read(binaryStream);
-          
-      }
-      catch (IOException e) {
-          
-      }
-      ImageIcon icon = new ImageIcon(image);
-      
-      
-      new OneRecipeDisplayJFrame(RecipeName, aLresult, icon).CreateJFrame(RecipeName, aLresult, icon);
+              }
 
-      
-    }
-    catch(SQLException e)
-    {
-      // if the error message is "out of memory", 
-      // it probably means no database file is found
-      // 
-        // System.err.println(e.getMessage());///////// Multiple querries are causing a resultset closed error
-        System.err.println(e.toString());
-        
-    }
-    finally
-    {
-      try
-      {
-        if(connection != null)
-          connection.close();
-      }
-      catch(SQLException e)
-      {
-        // connection close failed.
-        System.err.println(e);
-      }
-    }
-    
-    //return result;
-    
+              //ImageIcon icon = dbconnecttoSQLiteGetImage(RecipeName);
+                ImageIcon icon = new ImageIcon("img.jpg");
+
+              new OneRecipeDisplayJFrame(RecipeName, aLresult, icon).CreateJFrame(RecipeName, aLresult, icon);
+
+            }
+            catch(SQLException e)
+            {
+              // if the error message is "out of memory", 
+              // it probably means no database file is found
+              // 
+                System.err.println(e.getMessage());///////// Multiple querries are causing a resultset closed error
+                System.err.println(e.toString());
+            }
+            finally
+            {
+              try
+              {
+                if(connection != null)
+                  connection.close();
+              }
+              catch(SQLException e)
+              {
+                // connection close failed.
+                System.err.println(e);
+              }
+            }
+     
 }
 
-    
-    
-    
+        public ImageIcon dbconnecttoSQLiteGetImage(String RecipeName) {
+            
+
+            ImageIcon icon = null;
+            Connection connection = null;
+            try { Class.forName("org.sqlite.JDBC"); }
+            catch (ClassNotFoundException e) { System.err.println(e); }
+            
+            try
+            {
+              // create a database connection
+              connection = DriverManager.getConnection("jdbc:sqlite:recipe.db");
+
+              Statement statement = connection.createStatement();
+              statement.setQueryTimeout(30);  // set timeout to 30 sec.
+
+              String SQLQuery = "SELECT PicData FROM Pics where RecItem LIKE '" + RecipeName + "'";
+              ResultSet queryResultSet3 = statement.executeQuery(SQLQuery);
+
+              byte[] imgData = new byte[1];
+              BufferedImage buffImg = null;
+              Blob imageBlob = null;
+
+              String ss = queryResultSet3.toString();
+              System.out.println(ss);
+
+              try {
+              imageBlob = queryResultSet3.getBlob(1);
+              imgData = imageBlob.getBytes(1, (int)imageBlob.length());
+
+              } catch (Exception e2) {
+                  System.err.println(99);
+
+              }
+              // String encodedImage = Base64.encode(imgData);
+
+              try {
+                  buffImg = ImageIO.read(new ByteArrayInputStream(imgData));
+
+              }
+              catch (IOException e) {
+                   System.err.println(e.toString());
+              }
+
+              icon = new ImageIcon(buffImg);
+
+            }
+
+
+            catch(SQLException e)
+            {
+              // if the error message is "out of memory", 
+              // it probably means no database file is found
+              // 
+                System.err.println(e.getMessage());///////// Multiple querries are causing a resultset closed error
+                System.err.println(e.toString());
+
+
+            }
+            finally
+            {
+              try
+              {
+                if(connection != null)
+                  connection.close();
+              }
+              catch(SQLException e)
+              {
+                // connection close failed.
+                System.err.println(e);
+
+              }
+            }
+            return icon;
+}
 }
