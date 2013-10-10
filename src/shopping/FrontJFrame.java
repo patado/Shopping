@@ -32,6 +32,8 @@ public class FrontJFrame extends javax.swing.JFrame {
         RecipeNamejLabel = new javax.swing.JLabel();
         AllRecipesComboBox = new javax.swing.JComboBox();
         familyButton = new java.awt.Button();
+        ingredientsJLabel = new java.awt.Label();
+        AllIngredientsComboBox = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,6 +59,21 @@ public class FrontJFrame extends javax.swing.JFrame {
             }
         });
 
+        ingredientsJLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        ingredientsJLabel.setText("Search By Ingredient");
+
+        ArrayList <String> aL3 = new ArrayList();
+        aL3 = Menu.returnAllIngredients();
+
+        for (int x = 0; x < aL3.size();x++) {
+            AllIngredientsComboBox.addItem(aL3.get(x));
+        }
+        AllIngredientsComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AllIngredientsComboBoxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -64,9 +81,11 @@ public class FrontJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ingredientsJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(TitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(RecipeNamejLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(AllRecipesComboBox, 0, 272, Short.MAX_VALUE))
+                    .addComponent(AllRecipesComboBox, 0, 272, Short.MAX_VALUE)
+                    .addComponent(AllIngredientsComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, 272, Short.MAX_VALUE))
                 .addGap(55, 55, 55)
                 .addComponent(familyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(69, Short.MAX_VALUE))
@@ -80,9 +99,13 @@ public class FrontJFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(AllRecipesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(familyButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56)
-                .addComponent(RecipeNamejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addComponent(RecipeNamejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ingredientsJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(AllIngredientsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(193, Short.MAX_VALUE))
         );
 
         pack();
@@ -103,6 +126,10 @@ public class FrontJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         IndividualsJFrame.createJFrame();
     }//GEN-LAST:event_familyButtonMouseClicked
+
+    private void AllIngredientsComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AllIngredientsComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AllIngredientsComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,9 +168,11 @@ public class FrontJFrame extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox AllIngredientsComboBox;
     private javax.swing.JComboBox AllRecipesComboBox;
     private javax.swing.JLabel RecipeNamejLabel;
     private java.awt.Label TitleLabel;
     private java.awt.Button familyButton;
+    private java.awt.Label ingredientsJLabel;
     // End of variables declaration//GEN-END:variables
 }

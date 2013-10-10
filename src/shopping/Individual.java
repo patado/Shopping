@@ -52,7 +52,13 @@ public class Individual {
     }
     
     public String toString(int i) {
-        return "Name = " + name + "\nVegetarian = " + vegetarian;
+        
+        if (vegetarian)
+            return name + " (Vegetarian)"; 
+        else
+            return name;
+        
+        
     }
 
     public void initGuest (){

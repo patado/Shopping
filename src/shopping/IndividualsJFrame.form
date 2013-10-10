@@ -2,7 +2,7 @@
 
 <Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -161,7 +161,7 @@
             <Property name="rows" type="int" value="5"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="aL.add(new Individual(&quot;Adam&quot;, false));&#xa;aL.add(new Individual(&quot;John&quot;, true));&#xa;aL.add(new Individual(&quot;Paul&quot;, false));&#xa;aL.add(new Individual(&quot;Tony&quot;, false));&#xa;String s = null;&#xa;for (int x = 0; x&lt;aL.size(); x++) {&#xa;    &#xa;    s = s + aL.get(x).toString(1)+ &quot;\n\n&quot;;&#xa;}&#xa;IndividualDetailsjTextArea.setText(s);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="aL.add(new Individual(&quot;Adam&quot;, false));&#xa;aL.add(new Individual(&quot;John&quot;, true));&#xa;aL.add(new Individual(&quot;Paul&quot;, false));&#xa;aL.add(new Individual(&quot;Tony&quot;, false));&#xa;String s = &quot;&quot;;&#xa;for (int x = 0; x&lt;aL.size(); x++) {&#xa;    &#xa;    s = s + aL.get(x).toString(1)+ &quot;\n\n------------------\n&quot;;&#xa;}&#xa;IndividualDetailsjTextArea.setText(s);"/>
           </AuxValues>
         </Component>
       </SubComponents>

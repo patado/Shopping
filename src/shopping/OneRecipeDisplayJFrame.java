@@ -46,7 +46,7 @@ public class OneRecipeDisplayJFrame extends javax.swing.JFrame {
         RecipeProcedurejTextArea = new javax.swing.JTextArea();
         imagejLabel = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         RecipeNamejLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         RecipeNamejLabel.setText(recipeName);

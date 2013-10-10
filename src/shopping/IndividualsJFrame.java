@@ -51,7 +51,7 @@ public class IndividualsJFrame extends javax.swing.JFrame {
         AddIndividualjButton = new javax.swing.JButton();
         ClearAddjButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         IndividualDetailsjTextArea.setEditable(false);
         IndividualDetailsjTextArea.setColumns(20);
@@ -60,10 +60,10 @@ public class IndividualsJFrame extends javax.swing.JFrame {
         aL.add(new Individual("John", true));
         aL.add(new Individual("Paul", false));
         aL.add(new Individual("Tony", false));
-        String s = null;
+        String s = "";
         for (int x = 0; x<aL.size(); x++) {
 
-            s = s + aL.get(x).toString(1)+ "\n\n";
+            s = s + aL.get(x).toString(1)+ "\n\n------------------\n";
         }
         IndividualDetailsjTextArea.setText(s);
         jScrollPane1.setViewportView(IndividualDetailsjTextArea);

@@ -26,9 +26,11 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="ingredientsJLabel" max="32767" attributes="0"/>
                   <Component id="TitleLabel" min="-2" pref="131" max="-2" attributes="0"/>
                   <Component id="RecipeNamejLabel" alignment="0" max="32767" attributes="0"/>
                   <Component id="AllRecipesComboBox" pref="272" max="32767" attributes="0"/>
+                  <Component id="AllIngredientsComboBox" alignment="1" pref="272" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
               <Component id="familyButton" min="-2" pref="230" max="-2" attributes="0"/>
@@ -46,9 +48,13 @@
                   <Component id="AllRecipesComboBox" min="-2" max="-2" attributes="0"/>
                   <Component id="familyButton" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-              <Component id="RecipeNamejLabel" min="-2" pref="30" max="-2" attributes="0"/>
-              <EmptySpace pref="232" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <Component id="RecipeNamejLabel" min="-2" pref="9" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="ingredientsJLabel" min="-2" pref="31" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <Component id="AllIngredientsComboBox" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="193" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -84,6 +90,27 @@
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="familyButtonMouseClicked"/>
       </Events>
+    </Component>
+    <Component class="java.awt.Label" name="ingredientsJLabel">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="14" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Search By Ingredient"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="AllIngredientsComboBox">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AllIngredientsComboBoxActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="ArrayList &lt;String&gt; aL3 = new ArrayList();&#xa;aL3 = Menu.returnAllIngredients();&#xa;&#xa;for (int x = 0; x &lt; aL3.size();x++) {&#xa;    AllIngredientsComboBox.addItem(aL3.get(x));&#xa;}"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

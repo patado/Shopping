@@ -93,7 +93,7 @@ public class DBConnect {
     
 }
     
-     public ArrayList dbconnecttoSQLite2(String SQLQuery) {
+     public ArrayList dbconnecttoSQLite2(String SQLQuery, String column) {
     
     // load the sqlite-JDBC driver using the current class loader
          
@@ -120,7 +120,7 @@ public class DBConnect {
       while(queryResultSet.next())
       {
         // read the result set
-          QueryResultsNameRecipe.add(queryResultSet.getString("RecItem"));
+          QueryResultsNameRecipe.add(queryResultSet.getString(column));
           //System.out.println(rs2.getString("RecItem"));
 
       }

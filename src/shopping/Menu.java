@@ -36,7 +36,7 @@ public class Menu {
         ArrayList <String> aL = new ArrayList();
         ArrayList <String> aL2 = new ArrayList();
         
-        aL = new DBConnect().dbconnecttoSQLite2("select DISTINCT RecItem from RecipeIngredients where InItem LIKE '%"+ s + "%'");
+        aL = new DBConnect().dbconnecttoSQLite2("select DISTINCT RecItem from RecipeIngredients where InItem LIKE '%"+ s + "%'", "RecItem");
         
         //.dbconnecttoSQLite("select DISTINCT RecItem from RecipeIngredients where InItem LIKE '%"+ s + "%'");
         
@@ -66,7 +66,7 @@ public class Menu {
         ArrayList <String> aL = new ArrayList();
 
         
-        aL = new DBConnect().dbconnecttoSQLite2("select DISTINCT RecItem from RecipeIngredients");
+        aL = new DBConnect().dbconnecttoSQLite2("select DISTINCT RecItem from RecipeIngredients", "RecItem");
         
         //.dbconnecttoSQLite("select DISTINCT RecItem from RecipeIngredients where InItem LIKE '%"+ s + "%'");
         
@@ -83,5 +83,23 @@ public class Menu {
         new DBConnect().dbconnecttoSQLite("select RecItem from RecipeIngredients where InItem LIKE 'Milk'");
         
     }
+
+    
+       public static ArrayList returnAllIngredients() {
+
+        ArrayList <String> aL = new ArrayList();
+
+        
+        aL = new DBConnect().dbconnecttoSQLite2("select DISTINCT InItem from RecipeIngredients", "InItem");
+        
+        //.dbconnecttoSQLite("select DISTINCT RecItem from RecipeIngredients where InItem LIKE '%"+ s + "%'");
+        
+        //System.out.println(aL.toString()); 
+        //System.out.println(aL.size());
+        aL.add(0, "Choose an Ingredient");
+        
+        return aL;
+    
+       }    
     
 }
