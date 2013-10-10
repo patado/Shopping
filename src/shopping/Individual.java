@@ -39,10 +39,20 @@ public class Individual {
         this.allergies = allergies;
         this.vegetarian = vegetarian;
     }
+    
+    public Individual(String name, boolean vegetarian) {
+        this.name = name;
+        this.allergies = null;
+        this.vegetarian = vegetarian;
+    }
 
     @Override
     public String toString() {
         return "Individual{" + "name=" + name + ", allergies=" + allergies + ", vegetarian=" + vegetarian + '}';
+    }
+    
+    public String toString(int i) {
+        return "Name = " + name + "\nVegetarian = " + vegetarian;
     }
 
     public void initGuest (){

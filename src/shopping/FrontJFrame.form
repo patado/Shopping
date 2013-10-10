@@ -30,7 +30,9 @@
                   <Component id="RecipeNamejLabel" alignment="0" max="32767" attributes="0"/>
                   <Component id="AllRecipesComboBox" pref="272" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="354" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+              <Component id="familyButton" min="-2" pref="230" max="-2" attributes="0"/>
+              <EmptySpace pref="69" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -40,10 +42,13 @@
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
               <Component id="TitleLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="AllRecipesComboBox" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="AllRecipesComboBox" min="-2" max="-2" attributes="0"/>
+                  <Component id="familyButton" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
               <Component id="RecipeNamejLabel" min="-2" pref="30" max="-2" attributes="0"/>
-              <EmptySpace pref="236" max="32767" attributes="0"/>
+              <EmptySpace pref="232" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -65,15 +70,20 @@
           <StringArray count="0"/>
         </Property>
       </Properties>
-      <BindingProperties>
-        <BindingProperty name="selectedItem" source="AllRecipesChoiceDropDown" target="AllRecipesComboBox" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
-      </BindingProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AllRecipesComboBoxActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="ArrayList &lt;String&gt; aL2 = new ArrayList();&#xa;aL2 = Menu.returnAllRecipes();&#xa;&#xa;for (int x = 0; x &lt; aL2.size();x++) {&#xa;    AllRecipesComboBox.addItem(aL2.get(x));&#xa;}"/>
       </AuxValues>
+    </Component>
+    <Component class="java.awt.Button" name="familyButton">
+      <Properties>
+        <Property name="label" type="java.lang.String" value="Family Settings"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="familyButtonMouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

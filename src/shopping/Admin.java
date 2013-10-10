@@ -98,4 +98,11 @@ public class Admin {
         
 }
     
+    public static void displayIndividual(Individual in) {
+        
+        // System.out.println(in.toString());
+        
+        
+    }
+    
 }

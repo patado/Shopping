@@ -27,19 +27,16 @@ public class FrontJFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         TitleLabel = new java.awt.Label();
         RecipeNamejLabel = new javax.swing.JLabel();
         AllRecipesComboBox = new javax.swing.JComboBox();
+        familyButton = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         TitleLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         TitleLabel.setText("Choose Recipe");
-
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, new java.awt.Choice(), org.jdesktop.beansbinding.ObjectProperty.create(), AllRecipesComboBox, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
-        bindingGroup.addBinding(binding);
 
         ArrayList <String> aL2 = new ArrayList();
         aL2 = Menu.returnAllRecipes();
@@ -53,6 +50,13 @@ public class FrontJFrame extends javax.swing.JFrame {
             }
         });
 
+        familyButton.setLabel("Family Settings");
+        familyButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                familyButtonMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -63,7 +67,9 @@ public class FrontJFrame extends javax.swing.JFrame {
                     .addComponent(TitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(RecipeNamejLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(AllRecipesComboBox, 0, 272, Short.MAX_VALUE))
-                .addContainerGap(354, Short.MAX_VALUE))
+                .addGap(55, 55, 55)
+                .addComponent(familyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -71,13 +77,13 @@ public class FrontJFrame extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addComponent(TitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(AllRecipesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(AllRecipesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(familyButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56)
                 .addComponent(RecipeNamejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addContainerGap(232, Short.MAX_VALUE))
         );
-
-        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -92,6 +98,11 @@ public class FrontJFrame extends javax.swing.JFrame {
             new DBConnect().dbconnecttoSQLiteGetAndDisplayRecipe(AllRecipesComboBox.getSelectedItem().toString());
         }
     }//GEN-LAST:event_AllRecipesComboBoxActionPerformed
+
+    private void familyButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_familyButtonMouseClicked
+        // TODO add your handling code here:
+        IndividualsJFrame.createJFrame();
+    }//GEN-LAST:event_familyButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -133,6 +144,6 @@ public class FrontJFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox AllRecipesComboBox;
     private javax.swing.JLabel RecipeNamejLabel;
     private java.awt.Label TitleLabel;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
+    private java.awt.Button familyButton;
     // End of variables declaration//GEN-END:variables
 }

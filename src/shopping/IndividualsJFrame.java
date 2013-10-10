@@ -4,6 +4,8 @@
  */
 package shopping;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author phamon
@@ -33,27 +35,37 @@ public class IndividualsJFrame extends javax.swing.JFrame {
         RemoveIndividualjButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         AddNewjLabel = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        nameJTextField = new javax.swing.JTextField();
         AddNamejLabel = new javax.swing.JLabel();
         AddVegetarianjCheckBox = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jCheckBox6 = new javax.swing.JCheckBox();
-        jCheckBox7 = new javax.swing.JCheckBox();
-        jCheckBox8 = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        peanutsjCheckBox = new javax.swing.JCheckBox();
+        nutsjCheckBox = new javax.swing.JCheckBox();
+        eggsjCheckBox = new javax.swing.JCheckBox();
+        milkjCheckBox = new javax.swing.JCheckBox();
+        fishjCheckBox = new javax.swing.JCheckBox();
+        shellfishjCheckBox = new javax.swing.JCheckBox();
+        soyjCheckBox = new javax.swing.JCheckBox();
+        wheatjCheckBox = new javax.swing.JCheckBox();
+        AddIndividualjButton = new javax.swing.JButton();
+        ClearAddjButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         IndividualDetailsjTextArea.setEditable(false);
         IndividualDetailsjTextArea.setColumns(20);
         IndividualDetailsjTextArea.setRows(5);
+        aL.add(new Individual("Adam", false));
+        aL.add(new Individual("John", true));
+        aL.add(new Individual("Paul", false));
+        aL.add(new Individual("Tony", false));
+        String s = null;
+        for (int x = 0; x<aL.size(); x++) {
+
+            s = s + aL.get(x).toString(1)+ "\n\n";
+        }
+        IndividualDetailsjTextArea.setText(s);
         jScrollPane1.setViewportView(IndividualDetailsjTextArea);
 
         TitlejLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -66,6 +78,12 @@ public class IndividualsJFrame extends javax.swing.JFrame {
         AddNewjLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         AddNewjLabel.setText("Add New Individual");
 
+        nameJTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameJTextFieldActionPerformed(evt);
+            }
+        });
+
         AddNamejLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         AddNamejLabel.setText("Name");
 
@@ -75,35 +93,40 @@ public class IndividualsJFrame extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("Allergies:");
 
-        jCheckBox1.setText("Peanuts");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        peanutsjCheckBox.setText("Peanuts");
+        peanutsjCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                peanutsjCheckBoxActionPerformed(evt);
             }
         });
 
-        jCheckBox2.setText("Other Nuts");
+        nutsjCheckBox.setText("Other Nuts");
 
-        jCheckBox3.setText("Eggs");
+        eggsjCheckBox.setText("Eggs");
 
-        jCheckBox4.setText("Milk");
+        milkjCheckBox.setText("Milk");
 
-        jCheckBox5.setText("Fish");
+        fishjCheckBox.setText("Fish");
 
-        jCheckBox6.setText("Shellfish");
+        shellfishjCheckBox.setText("Shellfish");
 
-        jCheckBox7.setText("Soy");
+        soyjCheckBox.setText("Soy");
 
-        jCheckBox8.setText("Wheat");
-        jCheckBox8.addActionListener(new java.awt.event.ActionListener() {
+        wheatjCheckBox.setText("Wheat");
+        wheatjCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox8ActionPerformed(evt);
+                wheatjCheckBoxActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Add");
+        AddIndividualjButton.setText("Add");
+        AddIndividualjButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddIndividualjButtonActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Clear");
+        ClearAddjButton.setText("Clear");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,25 +145,25 @@ public class IndividualsJFrame extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jButton2)
+                                    .addComponent(ClearAddjButton)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(AddIndividualjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(AddNamejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel1))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(AddVegetarianjCheckBox)
-                                        .addComponent(jCheckBox2)
-                                        .addComponent(jCheckBox4)
-                                        .addComponent(jCheckBox6)
-                                        .addComponent(jCheckBox8))))
-                            .addComponent(jCheckBox1)
-                            .addComponent(jCheckBox3)
-                            .addComponent(jCheckBox5)
-                            .addComponent(jCheckBox7))
+                                        .addComponent(nutsjCheckBox)
+                                        .addComponent(milkjCheckBox)
+                                        .addComponent(shellfishjCheckBox)
+                                        .addComponent(wheatjCheckBox))))
+                            .addComponent(peanutsjCheckBox)
+                            .addComponent(eggsjCheckBox)
+                            .addComponent(fishjCheckBox)
+                            .addComponent(soyjCheckBox))
                         .addGap(37, 37, 37))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -167,34 +190,34 @@ public class IndividualsJFrame extends javax.swing.JFrame {
                                 .addComponent(AddNamejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel1)
-                                .addGap(26, 26, 26))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(14, 14, 14)
                                 .addComponent(AddVegetarianjCheckBox)
-                                .addGap(23, 23, 23)))
-                        .addComponent(jLabel2)
-                        .addGap(22, 22, 22)
+                                .addGap(59, 59, 59)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBox1)
-                            .addComponent(jCheckBox2))
+                            .addComponent(peanutsjCheckBox)
+                            .addComponent(nutsjCheckBox))
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBox3)
-                            .addComponent(jCheckBox4))
+                            .addComponent(eggsjCheckBox)
+                            .addComponent(milkjCheckBox))
                         .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBox5)
-                            .addComponent(jCheckBox6))
+                            .addComponent(fishjCheckBox)
+                            .addComponent(shellfishjCheckBox))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBox7)
-                            .addComponent(jCheckBox8))
+                            .addComponent(soyjCheckBox)
+                            .addComponent(wheatjCheckBox))
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))))
+                            .addComponent(AddIndividualjButton)
+                            .addComponent(ClearAddjButton))))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -207,18 +230,32 @@ public class IndividualsJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void peanutsjCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_peanutsjCheckBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_peanutsjCheckBoxActionPerformed
 
-    private void jCheckBox8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox8ActionPerformed
+    private void wheatjCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wheatjCheckBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox8ActionPerformed
+    }//GEN-LAST:event_wheatjCheckBoxActionPerformed
+
+    private void nameJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameJTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameJTextFieldActionPerformed
+
+    private void AddIndividualjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddIndividualjButtonActionPerformed
+        // TODO add your handling code here:
+        
+        if (nameJTextField != null) {
+            
+            Individual temp = new Individual(nameJTextField.getText(), AddVegetarianjCheckBox.isSelected());
+            Admin.displayIndividual(temp);
+        }
+    }//GEN-LAST:event_AddIndividualjButtonActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void createJFrame() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -249,28 +286,31 @@ public class IndividualsJFrame extends javax.swing.JFrame {
             }
         });
     }
+    
+    
+    private ArrayList <Individual> aL = new ArrayList(); 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddIndividualjButton;
     private javax.swing.JLabel AddNamejLabel;
     private javax.swing.JLabel AddNewjLabel;
     private javax.swing.JCheckBox AddVegetarianjCheckBox;
+    private javax.swing.JButton ClearAddjButton;
     private javax.swing.JTextArea IndividualDetailsjTextArea;
     private javax.swing.JButton RemoveIndividualjButton;
     private javax.swing.JComboBox RemoveIndividualjComboBox;
     private javax.swing.JLabel TitlejLabel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
-    private javax.swing.JCheckBox jCheckBox7;
-    private javax.swing.JCheckBox jCheckBox8;
+    private javax.swing.JCheckBox eggsjCheckBox;
+    private javax.swing.JCheckBox fishjCheckBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JCheckBox milkjCheckBox;
+    private javax.swing.JTextField nameJTextField;
+    private javax.swing.JCheckBox nutsjCheckBox;
+    private javax.swing.JCheckBox peanutsjCheckBox;
+    private javax.swing.JCheckBox shellfishjCheckBox;
+    private javax.swing.JCheckBox soyjCheckBox;
+    private javax.swing.JCheckBox wheatjCheckBox;
     // End of variables declaration//GEN-END:variables
 }
