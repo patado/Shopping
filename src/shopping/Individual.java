@@ -75,7 +75,7 @@ public class Individual {
         int optionAddPeople = sc.nextInt();
         
         switch (optionAddPeople){
-            case 0: return;
+            case 0: Admin.menuStart();
             case 1: addPeople();
                 break;
             case 2: removePeople();

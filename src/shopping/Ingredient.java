@@ -53,8 +53,7 @@ public class Ingredient extends Home {
             System.out.println("\nDo you want to remove / add ingredients?");
             System.out.println("type 1 to add");
             System.out.println("type 2 to remove");
-            System.out.println("type 3 to amend quantity");
-            System.out.println("type 4 to amend name");
+            System.out.println("type 3 to amend details for an ingredient");
             System.out.println("type 0 to exit");
         }
         else
