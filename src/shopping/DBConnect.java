@@ -5,6 +5,7 @@
 package shopping;
 
 
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import shopping.Shopping.*;
 
 
 /**
@@ -241,9 +243,13 @@ public class DBConnect {
               }
 
               //ImageIcon icon = dbconnecttoSQLiteGetImage(RecipeName);
-                ImageIcon icon = new ImageIcon("img.jpg");
+                ImageIcon icon = new ImageIcon("src\\shopping\\images\\" + RecipeName + ".jpg");
+                
+                Image img = icon.getImage();
+                Image newimg = img.getScaledInstance(200, -1,  java.awt.Image.SCALE_SMOOTH);
+                ImageIcon newIcon = new ImageIcon(newimg);
 
-              new OneRecipeDisplayJFrame(RecipeName, aLresult, icon).CreateJFrame(RecipeName, aLresult, icon);
+              new OneRecipeDisplayJFrame(RecipeName, aLresult, newIcon).CreateJFrame(RecipeName, aLresult, newIcon);
 
             }
             catch(SQLException e)
